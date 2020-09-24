@@ -20,7 +20,7 @@ $ cd ambz2_sdk
 
 Then you need to configure settings in `component/common/example/mqttc/example_mqttc.c`  based on your AWS IoT thing's setting:
 
-```bash
+```c
 #define SERVER_HOST    "xxxxxxxxxxxxxx-ats.iot.us-east-1.amazonaws.com"
 
 static const char *root_certificate =
@@ -46,7 +46,7 @@ In file "[patch/component/common/application/MQTT-C/include/mqtt_pal.h](patch/co
 *   MQTT-C's host & net short convert:  lwip's htons & ntohs
 *   MQTT-C's socket_handle:  MbedTLS's SSL contex
 
-In file "[patch/component/common/application/MQTT-C/src/mqtt_pal.c](patch/component/common/application/MQTT-C/src/mqtt_pal.c)", I treate `MBEDTLS_ERR_SSL_TIMEOUT` not to be error while doing ssl read and recv.  It's because I use receiving timeout instead of using select to do non-block recv.
+In file "[patch/component/common/application/MQTT-C/src/mqtt_pal.c](patch/component/common/application/MQTT-C/src/mqtt_pal.c)", I treat `MBEDTLS_ERR_SSL_TIMEOUT` not to be an error while doing ssl read and recv.  It's because I use receiving timeout instead of using select to do non-block recv.
 
 ## MbedTLS configuration
 
